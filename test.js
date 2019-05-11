@@ -274,6 +274,25 @@ test('mergeDeep with null value, unchanged', (t) => {
   t.is(actual, expected);
 });
 
+test('mergeDeep with multiple values changed', (t) => {
+  const input = Object.freeze({
+    beep: 'boop',
+  });
+  const changes = Object.freeze({
+    foo: 'bar',
+    hello: 'world',
+  });
+
+  const actual = mergeDeep(input, changes);
+  const expected = {
+    beep: 'boop',
+    foo: 'bar',
+    hello: 'world',
+  };
+
+  t.deepEqual(actual, expected);
+});
+
 test('getIn() with none object', (t) => {
   const input = null;
   const actual = getIn(input, ['a']);
@@ -361,7 +380,8 @@ test('chained set()', (t) => {
 
 test('chained setIn()', (t) => {
   const input = Object.freeze({});
-  const actual = chain(input).setIn(Object.freeze(['a', 'b', 'c']), 'foo').value;
+  const actual = chain(input).setIn(Object.freeze(['a', 'b', 'c']), 'foo')
+    .value;
   const expected = {
     a: {
       b: {
@@ -373,7 +393,9 @@ test('chained setIn()', (t) => {
 });
 
 test('chained assign()', (t) => {
-  const actual = chain(Object.freeze({ a: 'b' })).assign(Object.freeze({ c: 'd' })).value;
+  const actual = chain(Object.freeze({ a: 'b' })).assign(
+    Object.freeze({ c: 'd' }),
+  ).value;
   const expected = { a: 'b', c: 'd' };
   t.deepEqual(actual, expected);
 });
