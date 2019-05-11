@@ -363,7 +363,7 @@ test('map not changed values', (t) => {
 
 test('map w key', (t) => {
   const input = { a: '', b: '' };
-  const actual = map(input, (val, key) => key);
+  const actual = map(input, (_val, key) => key);
   const expected = { a: 'a', b: 'b' };
   t.deepEqual(actual, expected);
 });
