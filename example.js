@@ -1,4 +1,12 @@
-import { getIn, setIn, mergeDeep, assign, set, without, chain } from 'immutable-object-methods';
+import {
+  getIn,
+  setIn,
+  mergeDeep,
+  assign,
+  set,
+  without,
+  chain,
+} from 'immutable-object-methods';
 
 const input = { a: { b: 'c' } };
 const updated = setIn(input, ['a', 'd'], 'e');
