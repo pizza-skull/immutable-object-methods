@@ -13,25 +13,22 @@ npm install immutable-object-methods --save
 ## Usage
 
 ```js
-import {getIn, setIn, mergeDeep, assign, set, without, chain} from 'immutable-object-methods';
+import { getIn, setIn, mergeDeep, assign, set, without, chain } from 'immutable-object-methods';
 
-const input = {a: {b: 'c'}};
+const input = { a: { b: 'c' } };
 const updated = setIn(input, ['a', 'd'], 'e');
 
 console.log(input);
 console.log(updated);
 
-const merged = mergeDeep(
-  {foo: 'bar'},
-  {beep: {boop: 4711}, foo: 'bas'}
-);
+const merged = mergeDeep({ foo: 'bar' }, { beep: { boop: 4711 }, foo: 'bas' });
 console.log(merged);
 
 // immutable assign
-const assigned = assign({foo: 'bar'}, {foz: 'baz'});
+const assigned = assign({ foo: 'bar' }, { foz: 'baz' });
 console.log(assigned);
 
-const value = getIn({a: {b: 'c'}}, ['a', 'b']);
+const value = getIn({ a: { b: 'c' } }, ['a', 'b']);
 // will print out 'c'
 console.log(value);
 
@@ -39,19 +36,17 @@ const noneExists = getIn({}, ['a', 'b']);
 // don't throw if value doesn't exists, just return undefined
 console.log(noneExists === undefined);
 
-const data = set({beep: 'boop'}, 'foo', 'bar');
+const data = set({ beep: 'boop' }, 'foo', 'bar');
 console.log(data);
 
-const beep = without({foo: 'bar'}, 'foo');
+const beep = without({ foo: 'bar' }, 'foo');
 console.log(beep);
 
 // all of these can also be used chained, like
-const chained = chain({foo: 'bar'})
+const chained = chain({ foo: 'bar' })
   .set('beep', 'boop')
-  .without('foo')
-  .value;
+  .without('foo').value;
 console.log(chained);
-
 ```
 
 ## Tests
@@ -63,18 +58,18 @@ npm test
 
 ## Dependencies
 
-- [object-assign](https://github.com/sindresorhus/object-assign): ES2015 `Object.assign()` ponyfill
+- [object-assign](): ES2015 `Object.assign()` ponyfill
 
 ## Dev Dependencies
 
-- [ava](https://github.com/avajs/ava): Futuristic test runner 🚀
-- [babel-cli](https://github.com/babel/babel/tree/master/packages): Babel command line.
-- [babel-core](https://github.com/babel/babel/tree/master/packages): Babel compiler core.
-- [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.
+- [ava](): Futuristic test runner 🚀
+- [babel-cli](): Babel command line.
+- [babel-core](): Babel compiler core.
+- [babel-preset-es2015](): Babel preset for all es2015 plugins.
 - [package-json-to-readme](https://github.com/zeke/package-json-to-readme): Generate a README.md from package.json contents
+- [prettier](): Prettier is an opinionated code formatter
 - [semistandard](https://github.com/Flet/semistandard): All the goodness of `feross/standard` with semicolons sprinkled on top.
 - [snazzy](https://github.com/feross/snazzy): Format JavaScript Standard Style as Stylish (i.e. snazzy) output
-
 
 ## License
 

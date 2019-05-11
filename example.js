@@ -1,22 +1,19 @@
-import {getIn, setIn, mergeDeep, assign, set, without, chain} from 'immutable-object-methods';
+import { getIn, setIn, mergeDeep, assign, set, without, chain } from 'immutable-object-methods';
 
-const input = {a: {b: 'c'}};
+const input = { a: { b: 'c' } };
 const updated = setIn(input, ['a', 'd'], 'e');
 
 console.log(input);
 console.log(updated);
 
-const merged = mergeDeep(
-  {foo: 'bar'},
-  {beep: {boop: 4711}, foo: 'bas'}
-);
+const merged = mergeDeep({ foo: 'bar' }, { beep: { boop: 4711 }, foo: 'bas' });
 console.log(merged);
 
 // immutable assign
-const assigned = assign({foo: 'bar'}, {foz: 'baz'});
+const assigned = assign({ foo: 'bar' }, { foz: 'baz' });
 console.log(assigned);
 
-const value = getIn({a: {b: 'c'}}, ['a', 'b']);
+const value = getIn({ a: { b: 'c' } }, ['a', 'b']);
 // will print out 'c'
 console.log(value);
 
@@ -24,15 +21,14 @@ const noneExists = getIn({}, ['a', 'b']);
 // don't throw if value doesn't exists, just return undefined
 console.log(noneExists === undefined);
 
-const data = set({beep: 'boop'}, 'foo', 'bar');
+const data = set({ beep: 'boop' }, 'foo', 'bar');
 console.log(data);
 
-const beep = without({foo: 'bar'}, 'foo');
+const beep = without({ foo: 'bar' }, 'foo');
 console.log(beep);
 
 // all of these can also be used chained, like
-const chained = chain({foo: 'bar'})
+const chained = chain({ foo: 'bar' })
   .set('beep', 'boop')
-  .without('foo')
-  .value;
+  .without('foo').value;
 console.log(chained);
