@@ -134,6 +134,19 @@ test('assign w array', (t) => {
   t.true(Array.isArray(actual));
 });
 
+test('assign unchanged', (t) => {
+  const input = { foo: 'bar', hello: 'world' };
+  const actual = assign(
+    input,
+    Object.freeze({ foo: 'bas' }),
+    Object.freeze({ foo: 'bar' }),
+    Object.freeze({ hello: 'world' }),
+  );
+  const expected = input;
+
+  t.is(actual, expected);
+});
+
 test('mergeDeep', (t) => {
   const input = Object.freeze({});
   const changes = Object.freeze({
@@ -347,20 +360,20 @@ test('without() with falsy value', (t) => {
   t.deepEqual(actual, expected);
 });
 
-test('without() with undefined value', t => {
-  const input = Object.freeze({ foo: undefined});
+test('without() with undefined value', (t) => {
+  const input = Object.freeze({ foo: undefined });
   const actual = without(input, 'foo');
   const expected = {};
   t.deepEqual(actual, expected);
-})
+});
 
-test('without() on array', t => {
-  const input = Object.freeze([1,2,3]);
+test('without() on array', (t) => {
+  const input = Object.freeze([1, 2, 3]);
   const actual = without(input, 1);
-  const expected = [1,,3];
+  const expected = [1, , 3];
 
-  t.deepEqual(actual, expected)
-})
+  t.deepEqual(actual, expected);
+});
 
 test('map', (t) => {
   const input = { a: 1, b: 2, c: 3, d: 4 };
