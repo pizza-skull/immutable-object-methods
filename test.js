@@ -347,6 +347,21 @@ test('without() with falsy value', (t) => {
   t.deepEqual(actual, expected);
 });
 
+test('without() with undefined value', t => {
+  const input = Object.freeze({ foo: undefined});
+  const actual = without(input, 'foo');
+  const expected = {};
+  t.deepEqual(actual, expected);
+})
+
+test('without() on array', t => {
+  const input = Object.freeze([1,2,3]);
+  const actual = without(input, 1);
+  const expected = [1,,3];
+
+  t.deepEqual(actual, expected)
+})
+
 test('map', (t) => {
   const input = { a: 1, b: 2, c: 3, d: 4 };
   const actual = map(input, (num) => num % 2);
