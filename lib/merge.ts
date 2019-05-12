@@ -5,23 +5,23 @@ import { set } from './set';
 type ArgType = Record<keyof any, any>;
 
 class Wrapper {
-  static assign<T>(input: Readonly<T>): T;
-  static assign<T, U extends ArgType>(
+  static merge<T>(input: Readonly<T>): T;
+  static merge<T, U extends ArgType>(
     input: Readonly<T>,
     arg: Readonly<U>,
   ): Merge<T, U>;
-  static assign<T, U extends ArgType, V extends ArgType>(
+  static merge<T, U extends ArgType, V extends ArgType>(
     input: Readonly<T>,
     args1: Readonly<U>,
     args2: Readonly<V>,
   ): Merge<T, Merge<U, V>>;
-  static assign<T, U extends ArgType, V extends ArgType, W extends ArgType>(
+  static merge<T, U extends ArgType, V extends ArgType, W extends ArgType>(
     input: Readonly<T>,
     args1: Readonly<U>,
     args2: Readonly<V>,
     args3: Readonly<W>,
   ): Merge<T, Merge<U, Merge<V, W>>>;
-  static assign(input: any, ...args: any[]) {
+  static merge(input: any, ...args: any[]) {
     const changes: any = {};
     args.forEach((obj) => {
       for (const key in obj) {
@@ -39,4 +39,4 @@ class Wrapper {
   }
 }
 
-export const assign = Wrapper.assign;
+export const {merge: merge} = Wrapper;

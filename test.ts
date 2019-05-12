@@ -1,12 +1,5 @@
 import test from 'ava';
-import {
-  assign,
-  mergeDeep,
-  setIn,
-  set,
-  without,
-  map,
-} from './lib';
+import { merge, mergeDeep, setIn, set, without, map } from './lib';
 
 test('set', (t) => {
   const input = Object.freeze({ a: 'b' });
@@ -89,36 +82,36 @@ test('setIn with null value, unchanged', (t) => {
   t.is(actual, expected);
 });
 
-test('assign', (t) => {
-  const actual = assign(Object.freeze({}));
+test('merge', (t) => {
+  const actual = merge(Object.freeze({}));
   const expected = {};
   t.deepEqual(actual, expected);
   t.not(actual, expected);
 });
 
-test('assign multiple', (t) => {
-  const actual = assign(Object.freeze({ a: 'b' }), Object.freeze({ c: 'd' }));
+test('merge multiple', (t) => {
+  const actual = merge(Object.freeze({ a: 'b' }), Object.freeze({ c: 'd' }));
   const expected = { a: 'b', c: 'd' };
   t.deepEqual(actual, expected);
 });
 
 test('works w normal objects', (t) => {
-  const actual = assign({ a: 'b' }, { c: 'd' });
+  const actual = merge({ a: 'b' }, { c: 'd' });
   const expected = { a: 'b', c: 'd' };
   t.deepEqual(actual, expected);
 });
 
-test('assign w array', (t) => {
+test('merge w array', (t) => {
   const input = [0];
-  const actual = assign(input, [1, 2, 3]);
+  const actual = merge(input, [1, 2, 3]);
   const expected = [1, 2, 3];
   t.deepEqual(actual, expected);
   t.true(Array.isArray(actual));
 });
 
-test('assign unchanged', (t) => {
+test('merge unchanged', (t) => {
   const input = { foo: 'bar', hello: 'world' };
-  const actual = assign(
+  const actual = merge(
     input,
     Object.freeze({ foo: 'bas' }),
     Object.freeze({ foo: 'bar' }),
@@ -130,10 +123,10 @@ test('assign unchanged', (t) => {
   t.is(actual, expected);
 });
 
-test('assign is shallow', (t) => {
+test('merge is shallow', (t) => {
   const input = Object.freeze({ foo: { beep: 'boop' } });
   const change = { foo: { hello: 'world' } };
-  const actual = assign(input, change);
+  const actual = merge(input, change);
   const expected = change;
 
   t.deepEqual(actual, expected);

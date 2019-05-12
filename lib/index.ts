@@ -1,4 +1,4 @@
-export { assign } from './assign';
+export { merge } from './merge';
 export { map } from './map';
 export { mergeDeep } from './merge-deep';
 export { set } from './set';
