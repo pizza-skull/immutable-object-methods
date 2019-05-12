@@ -1,16 +1,9 @@
-// @ts-check
+import {set} from './set';
 
-const set = require('./set');
-
-const isObject = (obj) =>
+const isObject = (obj: unknown) =>
   typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 
-/**
- *
- * @param {Object} input
- * @param {Object} changes
- */
-const mergeDeep = (input = {}, changes) => {
+export const mergeDeep = (input: Object = {}, changes: Object): any => {
   let result = input;
 
   for (const key in changes) {
@@ -25,5 +18,3 @@ const mergeDeep = (input = {}, changes) => {
 
   return result;
 };
-
-module.exports = mergeDeep;

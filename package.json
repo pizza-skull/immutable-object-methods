@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "ava",
-    "posttest": "package-json-to-readme package.json > readme.md"
+    "posttest": "package-json-to-readme package.json > readme.md",
+    "prepare": "tsc lib"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,18 @@
   "devDependencies": {
     "ava": "^1.4.1",
     "package-json-to-readme": "^2.1.1",
-    "prettier": "^1.17.0"
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "typescript": "^3.4.5"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "ava": {
+		"compileEnhancements": false,
+		"extensions": [
+			"ts"
+		],
+		"require": [
+			"ts-node/register/transpile-only"
+		]
+	}
 }

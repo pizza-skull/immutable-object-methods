@@ -1,13 +1,6 @@
-// @ts-check
+import { set } from './set';
 
-const set = require('./set');
-
-/**
- *
- * @param {Object} input
- * @param  {...Object} args
- */
-const assign = (input, ...args) => {
+export const assign = (input: object, ...args: object[]) => {
   const changes = {};
 
   args.forEach((obj) => {
@@ -24,5 +17,3 @@ const assign = (input, ...args) => {
 
   return result;
 };
-
-module.exports = assign;

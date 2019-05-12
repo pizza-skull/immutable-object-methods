@@ -79,6 +79,8 @@ None
 - [ava](https://ghub.io/ava): Testing can be a drag. AVA helps you get it done.
 - [package-json-to-readme](https://ghub.io/package-json-to-readme): Generate a README.md from package.json contents
 - [prettier](https://ghub.io/prettier): Prettier is an opinionated code formatter
+- [ts-node](https://ghub.io/ts-node): TypeScript execution environment and REPL for node.js, with source map support
+- [typescript](https://ghub.io/typescript): TypeScript is a language for application scale JavaScript development
 
 ## License
 

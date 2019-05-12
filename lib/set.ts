@@ -1,12 +1,8 @@
-// @ts-check
-
-/**
- *
- * @param {Readonly<Object>} input
- * @param {Readonly<string|number>} key
- * @param {any} value
- */
-const set = (input, key, value) => {
+export const set = (
+  input: Readonly<object>,
+  key: Readonly<string | number>,
+  value: any,
+) => {
   if (input[key] === value) {
     return input;
   }
@@ -21,5 +17,3 @@ const set = (input, key, value) => {
 
   return result;
 };
-
-module.exports = set;

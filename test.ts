@@ -1,7 +1,5 @@
-// @ts-check
-
 import test from 'ava';
-import {
+import  {
   assign,
   getIn,
   mergeDeep,
@@ -10,19 +8,7 @@ import {
   without,
   map,
   chain,
-  default as objectMethods,
 } from './lib';
-
-test('default export', (t) => {
-  t.is(objectMethods.assign, assign);
-  t.is(objectMethods.getIn, getIn);
-  t.is(objectMethods.mergeDeep, mergeDeep);
-  t.is(objectMethods.setIn, setIn);
-  t.is(objectMethods.set, set);
-  t.is(objectMethods.without, without);
-  t.is(objectMethods.map, map);
-  t.is(objectMethods.chain, chain);
-});
 
 test('set', (t) => {
   const input = Object.freeze({ a: 'b' });
@@ -196,7 +182,7 @@ test('mergeDeep with new unchanged array', (t) => {
     a: 'yo',
     c: [1, 2, 3],
   });
-  const actual = mergeDeep(input, changes);
+  const actual: { a: string; c: number[] } = mergeDeep(input, changes);
   const expected = {
     a: 'yo',
     c: [1, 2, 3],

@@ -1,11 +1,4 @@
-// @ts-check
-
-/**
- *
- * @param {Object} input
- * @param {string|number} key
- */
-const without = (input, key) => {
+export const without = (input: object, key: string | number) => {
   if (!(key in input)) {
     return input;
   }
@@ -20,5 +13,3 @@ const without = (input, key) => {
 
   return result;
 };
-
-module.exports = without;
