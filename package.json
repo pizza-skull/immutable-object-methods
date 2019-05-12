@@ -5,7 +5,6 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "ava",
-    "prepublish": "npm run build",
     "posttest": "package-json-to-readme package.json > readme.md"
   },
   "repository": {
