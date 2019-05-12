@@ -1,5 +1,5 @@
 import test from 'ava';
-import  {
+import {
   assign,
   getIn,
   mergeDeep,
@@ -25,15 +25,6 @@ test('set with unchanged data', (t) => {
   const actual = set(input, 'foo', 'bar');
   const expected = input;
   t.is(actual, expected);
-});
-
-test('set with array', (t) => {
-  const input = Object.freeze([0, 1]);
-  const actual = set(input, 0, -1);
-  const expected = [-1, 1];
-
-  t.deepEqual(actual, expected);
-  t.true(Array.isArray(actual));
 });
 
 test('setIn', (t) => {
@@ -110,6 +101,14 @@ test('assign', (t) => {
 test('assign multiple', (t) => {
   const actual = assign(Object.freeze({ a: 'b' }), Object.freeze({ c: 'd' }));
   const expected = { a: 'b', c: 'd' };
+  actual.c = 'e';
+  t.deepEqual(actual, expected);
+});
+
+test('works w normal objects', (t) => {
+  const actual = assign({ a: 'b' }, { c: 'd' });
+  const expected = { a: 'b', c: 'd' };
+  actual.c = 'e';
   t.deepEqual(actual, expected);
 });
 
@@ -129,6 +128,7 @@ test('assign unchanged', (t) => {
     Object.freeze({ foo: 'bar' }),
     Object.freeze({ hello: 'world' }),
   );
+
   const expected = input;
 
   t.is(actual, expected);
