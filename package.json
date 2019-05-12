@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micnews/immutable-object-methods.git"
+    "url": "git+https://github.com/pizza-skull/immutable-object-methods.git"
   },
   "author": "mic.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micnews/immutable-object-methods/issues"
+    "url": "https://github.com/pizza-skull/immutable-object-methods/issues"
   },
-  "homepage": "https://github.com/micnews/immutable-object-methods#readme",
+  "homepage": "https://github.com/pizza-skull/immutable-object-methods#readme",
   "devDependencies": {
     "ava": "^1.4.1",
     "package-json-to-readme": "^2.1.1",
