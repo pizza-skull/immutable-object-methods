@@ -24,16 +24,17 @@
     "package-json-to-readme": "^2.1.1",
     "prettier": "^1.17.0",
     "ts-node": "^8.1.0",
+    "type-fest": "^0.4.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {},
   "ava": {
-		"compileEnhancements": false,
-		"extensions": [
-			"ts"
-		],
-		"require": [
-			"ts-node/register/transpile-only"
-		]
-	}
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ]
+  }
 }
