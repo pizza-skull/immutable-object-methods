@@ -10,7 +10,7 @@ export const mergeDeep = (input: any, changes: any): any => {
     const childChange = changes[key];
 
     const newChild = isObject(childChange)
-      ? mergeDeep(input[key], childChange)
+      ? mergeDeep(input[key] || {}, childChange)
       : childChange;
 
     result = set(result, key, newChild);

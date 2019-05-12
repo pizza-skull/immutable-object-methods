@@ -358,3 +358,10 @@ test('map w key', (t) => {
   const expected = { a: 'a', b: 'b' };
   t.deepEqual(actual, expected);
 });
+
+test('map array', (t) => {
+  const input = [1,2,3,4]
+  const actual = map(input, num => num % 2);
+  const expected = [1,0,1,0];
+  t.deepEqual(actual, expected)
+})
