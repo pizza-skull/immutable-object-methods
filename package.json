@@ -6,7 +6,8 @@
   "scripts": {
     "test": "ava",
     "posttest": "package-json-to-readme package.json > readme.md",
-    "prepare": "tsc lib"
+    "build": "rm -rf dist && tsc",
+    "prepare": "yarn build"
   },
   "repository": {
     "type": "git",
