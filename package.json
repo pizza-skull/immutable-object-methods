@@ -6,7 +6,7 @@
   "scripts": {
     "test": "ava",
     "prepublish": "npm run build",
-    "posttest": "package-json-to-readme package.json --travis > readme.md"
+    "posttest": "package-json-to-readme package.json > readme.md"
   },
   "repository": {
     "type": "git",
