@@ -3,7 +3,7 @@ import { set } from './set';
 const isObject = (obj: unknown) =>
   typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 
-export const mergeDeep = (input: Object = {}, changes: Object): any => {
+export const mergeDeep = (input: any, changes: any): any => {
   let result = input;
 
   for (const key in changes) {
