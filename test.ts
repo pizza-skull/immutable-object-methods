@@ -387,7 +387,7 @@ test('map not changed values', (t) => {
 });
 
 test('map w key', (t) => {
-  const input = Object.freeze({ a: '', b: '' });
+  const input = Object.freeze({ a: 0, b: 1 });
   const actual = map(input, (_val, key) => key);
   const expected = { a: 'a', b: 'b' };
   t.deepEqual(actual, expected);
