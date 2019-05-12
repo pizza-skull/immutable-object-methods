@@ -149,14 +149,14 @@ test('assign unchanged', (t) => {
 });
 
 test('assign is shallow', (t) => {
-  const input = Object.freeze({ foo: {beep: 'boop'}});
-  const change = {foo: {hello: 'world'}};
+  const input = Object.freeze({ foo: { beep: 'boop' } });
+  const change = { foo: { hello: 'world' } };
   const actual = assign(input, change);
   const expected = change;
 
   t.deepEqual(actual, expected);
   t.not(actual, expected);
-})
+});
 
 test('mergeDeep', (t) => {
   const input = Object.freeze({});
