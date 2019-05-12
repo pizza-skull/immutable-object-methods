@@ -1,13 +1,11 @@
 import test from 'ava';
 import {
   assign,
-  getIn,
   mergeDeep,
   setIn,
   set,
   without,
   map,
-  chain,
 } from './lib';
 
 test('set', (t) => {
@@ -101,14 +99,12 @@ test('assign', (t) => {
 test('assign multiple', (t) => {
   const actual = assign(Object.freeze({ a: 'b' }), Object.freeze({ c: 'd' }));
   const expected = { a: 'b', c: 'd' };
-  actual.c = 'e';
   t.deepEqual(actual, expected);
 });
 
 test('works w normal objects', (t) => {
   const actual = assign({ a: 'b' }, { c: 'd' });
   const expected = { a: 'b', c: 'd' };
-  actual.c = 'e';
   t.deepEqual(actual, expected);
 });
 
@@ -303,29 +299,6 @@ test('mergeDeep with multiple values changed', (t) => {
   t.deepEqual(actual, expected);
 });
 
-test('getIn() with none object', (t) => {
-  const input = null;
-  const actual = getIn(input, ['a']);
-  t.is(actual, undefined);
-});
-
-test('getIn() with simple object & exists', (t) => {
-  const input = {
-    a: { b: 'c' },
-  };
-  const actual = getIn(input, ['a', 'b']);
-  const expected = 'c';
-  t.is(actual, expected);
-});
-
-test('getIn() with simple object & does not exists', (t) => {
-  const input = {
-    a: { b: 'c' },
-  };
-  const actual = getIn(input, ['foo', 'bar']);
-  t.is(actual, undefined);
-});
-
 test('without()', (t) => {
   const input = Object.freeze({
     a: 'b',
@@ -390,94 +363,5 @@ test('map w key', (t) => {
   const input = Object.freeze({ a: 0, b: 1 });
   const actual = map(input, (_val, key) => key);
   const expected = { a: 'a', b: 'b' };
-  t.deepEqual(actual, expected);
-});
-
-test('chained set()', (t) => {
-  const input = Object.freeze({ a: 'b' });
-  const actual = chain(input).set('foo', 'bar').value;
-  const expected = {
-    a: 'b',
-    foo: 'bar',
-  };
-  t.deepEqual(actual, expected);
-});
-
-test('chained setIn()', (t) => {
-  const input = Object.freeze({});
-  const actual = chain(input).setIn(Object.freeze(['a', 'b', 'c']), 'foo')
-    .value;
-  const expected = {
-    a: {
-      b: {
-        c: 'foo',
-      },
-    },
-  };
-  t.deepEqual(actual, expected);
-});
-
-test('chained assign()', (t) => {
-  const actual = chain(Object.freeze({ a: 'b' })).assign(
-    Object.freeze({ c: 'd' }),
-  ).value;
-  const expected = { a: 'b', c: 'd' };
-  t.deepEqual(actual, expected);
-});
-
-test('chained mergeDeep()', (t) => {
-  const input = Object.freeze({});
-  const changes = Object.freeze({
-    a: {
-      b: {
-        c: 'foo',
-      },
-    },
-    d: 'bar',
-  });
-  const actual = chain(input).mergeDeep(changes).value;
-  const expected = changes;
-  t.deepEqual(actual, expected);
-});
-
-test('chained getIn()', (t) => {
-  const input = {
-    a: { b: 'c' },
-  };
-  const actual = chain(input).getIn(['a', 'b']).value;
-  const expected = 'c';
-  t.is(actual, expected);
-});
-
-test('chained getIn() + set()', (t) => {
-  const input = {
-    a: { b: 'c' },
-  };
-  const actual = chain(input)
-    .getIn(['a'])
-    .set('c', 'd').value;
-  const expected = {
-    b: 'c',
-    c: 'd',
-  };
-  t.deepEqual(actual, expected);
-});
-
-test('chained without()', (t) => {
-  const input = Object.freeze({
-    a: 'b',
-    c: 'd',
-  });
-  const actual = chain(input).without('c').value;
-  const expected = {
-    a: 'b',
-  };
-  t.deepEqual(actual, expected);
-});
-
-test('chained map()', (t) => {
-  const input = { a: 1, b: 2, c: 3, d: 4 };
-  const actual = chain(input).map((num) => num % 2).value;
-  const expected = { a: 1, b: 0, c: 1, d: 0 };
   t.deepEqual(actual, expected);
 });

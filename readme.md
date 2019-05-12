@@ -4,10 +4,10 @@ Update normal plain javascript object, immutable style. Simlar to how immutable.
 
 ## Installation
 
-This is a [Node.js](https://nodejs.org/) module available through the
-[npm registry](https://www.npmjs.com/). It can be installed using the
+This is a [Node.js](https://nodejs.org/) module available through the 
+[npm registry](https://www.npmjs.com/). It can be installed using the 
 [`npm`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
-or
+or 
 [`yarn`](https://yarnpkg.com/en/)
 command line tools.
 
@@ -19,13 +19,11 @@ npm install immutable-object-methods --save
 
 ```js
 import {
-  getIn,
   setIn,
   mergeDeep,
   assign,
   set,
   without,
-  chain,
 } from 'immutable-object-methods';
 
 const input = { a: { b: 'c' } };
@@ -41,25 +39,13 @@ console.log(merged);
 const assigned = assign({ foo: 'bar' }, { foz: 'baz' });
 console.log(assigned);
 
-const value = getIn({ a: { b: 'c' } }, ['a', 'b']);
-// will print out 'c'
-console.log(value);
-
-const noneExists = getIn({}, ['a', 'b']);
-// don't throw if value doesn't exists, just return undefined
-console.log(noneExists === undefined);
-
 const data = set({ beep: 'boop' }, 'foo', 'bar');
 console.log(data);
 
 const beep = without({ foo: 'bar' }, 'foo');
 console.log(beep);
 
-// all of these can also be used chained, like
-const chained = chain({ foo: 'bar' })
-  .set('beep', 'boop')
-  .without('foo').value;
-console.log(chained);
+
 ```
 
 ## Tests
@@ -79,6 +65,7 @@ None
 - [package-json-to-readme](https://ghub.io/package-json-to-readme): Generate a README.md from package.json contents
 - [prettier](https://ghub.io/prettier): Prettier is an opinionated code formatter
 - [ts-node](https://ghub.io/ts-node): TypeScript execution environment and REPL for node.js, with source map support
+- [type-fest](https://ghub.io/type-fest): A collection of essential TypeScript types
 - [typescript](https://ghub.io/typescript): TypeScript is a language for application scale JavaScript development
 
 ## License
