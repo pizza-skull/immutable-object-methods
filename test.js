@@ -1,5 +1,6 @@
+// @ts-check
+
 import test from 'ava';
-import 'babel-core/register';
 import {
   assign,
   getIn,
@@ -383,14 +384,14 @@ test('map', (t) => {
 });
 
 test('map not changed values', (t) => {
-  const input = { a: 1, b: 2, c: 3 };
+  const input = Object.freeze({ a: 1, b: 2, c: 3 });
   const actual = map(input, (num) => num);
   const expected = input;
   t.is(actual, expected);
 });
 
 test('map w key', (t) => {
-  const input = { a: '', b: '' };
+  const input = Object.freeze({ a: '', b: '' });
   const actual = map(input, (_val, key) => key);
   const expected = { a: 'a', b: 'b' };
   t.deepEqual(actual, expected);
