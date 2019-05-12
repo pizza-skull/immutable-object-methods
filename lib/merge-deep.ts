@@ -1,4 +1,4 @@
-import {set} from './set';
+import { set } from './set';
 
 const isObject = (obj: unknown) =>
   typeof obj === 'object' && obj !== null && !Array.isArray(obj);
