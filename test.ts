@@ -96,15 +96,15 @@ test('merge multiple', (t) => {
 });
 
 test('works w normal objects', (t) => {
-  const actual = merge({ a: 'b' }, { c: 'd' });
+  const actual = merge({ a: 'b', c: 0 }, { c: 'd' });
   const expected = { a: 'b', c: 'd' };
   t.deepEqual(actual, expected);
 });
 
 test('merge w array', (t) => {
-  const input = [0];
+  const input = [0,,,4];
   const actual = merge(input, [1, 2, 3]);
-  const expected = [1, 2, 3];
+  const expected = [1, 2, 3,4];
   t.deepEqual(actual, expected);
   t.true(Array.isArray(actual));
 });
