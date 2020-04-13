@@ -2,7 +2,7 @@
   "name": "immutable-object-methods",
   "version": "3.0.0",
   "description": "Update normal plain javascript object, immutable style. Simlar to how immutable.js, seamless-immutable etc does it but a lot smaller and simpler.",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "ava",
     "posttest": "package-json-to-readme package.json > readme.md",
