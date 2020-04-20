@@ -244,7 +244,6 @@ test('mergeDeep with nested changed value', (t) => {
   const changes = Object.freeze({
     a: {
       b: 'd',
-      hey: 'hoo'
     },
   });
   const actual = mergeDeep(input, changes);
