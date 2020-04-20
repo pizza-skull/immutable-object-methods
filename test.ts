@@ -102,9 +102,9 @@ test('works w normal objects', (t) => {
 });
 
 test('merge w array', (t) => {
-  const input = [0,,,4];
+  const input = [0, , , 4];
   const actual = merge(input, [1, 2, 3]);
-  const expected = [1, 2, 3,4];
+  const expected = [1, 2, 3, 4];
   t.deepEqual(actual, expected);
   t.true(Array.isArray(actual));
 });
@@ -244,9 +244,11 @@ test('mergeDeep with nested changed value', (t) => {
   const changes = Object.freeze({
     a: {
       b: 'd',
+      hey: 'hoo'
     },
   });
   const actual = mergeDeep(input, changes);
+  
   const expected = {
     a: {
       b: 'd',
@@ -360,8 +362,8 @@ test('map w key', (t) => {
 });
 
 test('map array', (t) => {
-  const input = [1,2,3,4]
-  const actual = map(input, num => num % 2);
-  const expected = [1,0,1,0];
-  t.deepEqual(actual, expected)
-})
+  const input = [1, 2, 3, 4];
+  const actual = map(input, (num) => num % 2);
+  const expected = [1, 0, 1, 0];
+  t.deepEqual(actual, expected);
+});

@@ -1,9 +1,16 @@
 import { set } from './set';
+import { Merge } from 'type-fest';
 
 const isObject = (obj: unknown) =>
   typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 
-export const mergeDeep = (input: any, changes: any): any => {
+
+export function mergeDeep <InputType, ChangesType>(
+  input: InputType,
+  changes: ChangesType,
+): Merge<InputType, ChangesType> 
+
+export function mergeDeep(input: any, changes: any) {
   let result = input;
 
   for (const key in changes) {

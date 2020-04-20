@@ -15,7 +15,7 @@ export const set = <
 
   const result: any = Array.isArray(input) ? [] : {};
 
-    Object.keys(input).forEach((inputKey) => {
+  Object.keys(input).forEach((inputKey) => {
     result[inputKey] = inputKey === key ? value : input[inputKey];
   });
 
