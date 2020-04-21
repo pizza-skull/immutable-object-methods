@@ -18,6 +18,22 @@ test('set with unchanged data', (t) => {
   t.is(actual, expected);
 });
 
+test('set with array', (t) => {
+  const input = Object.freeze([] as (string|number)[]);
+  const actual = set(input, 0, 'hello');
+  const expected = ['hello'];
+  t.true(Array.isArray(input))
+  t.true(Array.isArray(actual))
+  t.deepEqual(actual, expected);
+})
+
+test('set with unchanged array', (t) => {
+  const input = Object.freeze(['hello'] as (string|number)[]);
+  const actual = set(input, 0, 'hello');
+  const expected = input
+  t.is(actual, expected);
+})
+
 test('setIn', (t) => {
   const input = Object.freeze({});
   const actual = setIn(input, Object.freeze(['a', 'b', 'c']), 'foo');

@@ -1,6 +1,7 @@
 import { Merge } from 'type-fest';
 
-export const set = <
+export function set<T>(input: readonly T[], key: number, value: T): readonly T[]
+export function set <
   T extends Record<keyof any | K, any>,
   K extends Readonly<keyof any>,
   V
@@ -8,7 +9,16 @@ export const set = <
   input: Readonly<T>,
   key: K,
   value: V,
-): Merge<T, { [key in K]: V }> => {
+): Merge<T, { [key in K]: V }>
+export function set <
+  T extends Record<keyof any | K, any>,
+  K extends Readonly<keyof any>,
+  V
+>(
+  input: Readonly<T>,
+  key: K,
+  value: V,
+): Merge<T, { [key in K]: V }> {
   if (input[key] === value) {
     return input;
   }
